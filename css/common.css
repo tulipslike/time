@@ -1,0 +1,274 @@
+@charset "UTF-8";
+@import url(reset.css);
+@import url(font.css);
+@import url(all.min.css);
+
+#all-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 1024px;
+  min-height: 768px;
+  overflow: hidden;
+}
+#all-wrap {
+  background: url(../img/bg_morning.jpg) no-repeat center;
+  background-size: cover;
+  color: #333;
+  transition: all 1s 0.5s
+}
+
+/*구름-애니메이션 적용*/
+[class ^= "cloud"] {
+  position: absolute;
+  z-index: -1
+}
+.cloud-1 {
+  left: -1150px;
+  animation: c1 120s 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite
+}
+.cloud-2 {
+  left: 0;
+  animation: c2 200s linear infinite
+}
+
+@keyframes c1 {
+  0% {left: -1150px}
+  100% {left: 100%}
+}
+@keyframes c2 {
+  0% {left: 0}
+  50% {left: 100%}
+  50.0001% {left: -1850px}
+  100% {left: 0}
+}
+
+/*로고*/
+h1 {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+h1 a {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: url(../img/logo_b.png) no-repeat center/ contain
+}
+
+/*주메뉴*/
+.gnb {
+  position: absolute;
+  right: 250px;
+  top: 40px;
+}
+.gnb a {
+  display: block;
+  float: left;
+  font-size: 30px;
+  padding: 10px 20px;
+  position: relative
+}
+/* :before, :after
+CSS로 html 가상요소를 만들 수 있음*/
+.gnb a:after {
+  content: "";
+  display: block;
+  
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 5px;
+  background: #777;
+  transition: all 0.1s;
+  opacity: 0
+}
+.gnb a:hover:after {
+  opacity: 0.9
+}
+
+/*sns*/
+.sns {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+.sns a {
+  font-size: 30px;
+  padding: 3px;
+  opacity: 0.5
+}
+.sns a:hover {
+  opacity: 0.9
+}
+
+/*본문 텍스트*/
+.main-text {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5)
+}
+.main-text h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.main-text blockquote {
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+/*테마 버튼*/
+.theme-btn {
+  position: fixed;
+  bottom: 50px;
+  left: 5%;
+  width: 90%;
+}
+.theme-btn li {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.theme-btn a {
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  line-height: 2;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: all 0.2s
+}
+.theme-btn li:hover a {
+  background: #777;
+  color: #fff
+}
+.theme-btn li.on a {
+  background: #111;
+  color: #eee;
+  transform: translateY(-15px);
+  box-shadow: 0 15px 10px rgba(0,0,0,0.7)
+}
+
+/*모바일 화면*/
+.mobile {
+  position: absolute;
+  right: -300px;
+  top: 200px;
+  width: 1226px;
+  height: 809px;
+  background: url(../img/phone_morning.png) no-repeat 0 0;
+/*  transition: all 1s 0.5s*/
+}
+.mobile .screen {
+  position: absolute;
+  left: 136px;
+  top: 100px;
+  width: 545px;
+  height: 308px;
+  padding-left: 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.mobile [class ^= "mcloud"] {
+  position: absolute;
+  top: -50px;
+}
+.mobile .mcloud-1 {
+  width: 600px;
+  left: -600px;
+  animation: cm1 120s linear infinite
+}
+.mobile .mcloud-2 {
+  width: 900px;
+  animation: cm2 200s linear infinite
+}
+
+@keyframes cm1 {
+  0% {left: -600px}
+  100% {left: 100%}
+}
+@keyframes cm2 {
+  0% {left: 0}
+  50% {left: 100%}
+  50.0001% {left: -900px}
+  100% {left: 0}
+}
+.mobile .time {
+  position: relative;
+  font-weight: bold;
+  font-size: 80px;
+  line-height: 308px;  
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.5)
+}
+
+/*테마별 스타일 만들기*/
+/*아침*/
+#all-wrap.morning {
+  background-image: url(../img/bg_morning.jpg);
+  color: #222
+}
+#all-wrap.morning .mobile {
+  background-image: url(../img/phone_morning.png)
+}
+#all-wrap.morning h1 a {
+  background-image: url(../img/logo_b.png)
+}
+
+/*점심*/
+#all-wrap.afternoon {
+  background-image: url(../img/bg_afternoon.jpg);
+  color: #222
+}
+#all-wrap.afternoon .mobile {
+  background-image: url(../img/phone_afternoon.png)
+}
+#all-wrap.afternoon h1 a {
+  background-image: url(../img/logo_b.png)
+}
+
+/*저녁*/
+#all-wrap.evening {
+  background-image: url(../img/bg_evening.jpg);
+  color: #fff
+}
+#all-wrap.evening .mobile {
+  background-image: url(../img/phone_evening.png)
+}
+#all-wrap.evening h1 a {
+  background-image: url(../img/logo_w.png)
+}
+
+/*밤*/
+#all-wrap.night {
+  background-image: url(../img/bg_night.jpg);
+  color: #eee
+}
+#all-wrap.night .mobile {
+  background-image: url(../img/phone_night.png)
+}
+#all-wrap.night h1 a {
+  background-image: url(../img/logo_w.png)
+}
+#all-wrap.night [class *= "cloud"] {
+  opacity: 0.2
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
